@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import Tmdb from './Tmdb';
+import MovieRow from './components/MovieRow';
 import './App.css';
 
 function App() {
+
+    const [movieList, setMovielist] = useState([]);
+
+    useEffect(() => {
+        const loadAll = async () => {
+            let list = await Tmdb.getHomeList();
+            setMovielist(list);
+        }
+
+        loadAll();
+    }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="page">
+        <section className="list">
+            {movieList.map((item, key) => (
+                  <MovieRow key={key} title={item.title} items={item.item}/>
+            ))}
+        </section>
     </div>
   );
 }
