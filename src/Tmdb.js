@@ -11,7 +11,6 @@ const API_BASE = 'https://api.themoviedb.org/3';
 * romance
 * documentários
 * */
-
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${API_BASE}${endpoint}`);
     const json = await req.json();
@@ -64,24 +63,7 @@ export default {
         ]
     },
     getMovieId: async (movieId, type) => {
-        let info = {
-
-        }
-
-        if(movieId) {
-            switch (type) {
-                case 'movie':
-                    info = await basicFetch(`/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`);
-                    break;
-                case 'tv':
-                    info = await basicFetch(`/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`);
-                    break;
-                default:
-                    info = null;
-                    break;
-            }
-        }
-        return info;
+        return await basicFetch(`/${type}/${movieId}?language=pt-BR&api_key=${API_KEY}`);
     }
 
 }

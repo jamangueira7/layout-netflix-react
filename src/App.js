@@ -29,7 +29,7 @@ function App() {
         {featuredData &&
             <FeatureMovie item={featuredData}/>
         }
-        <section className="list">
+        <section className="lists">
             {movieList.map((item, key) => (
                   <MovieRow key={key} title={item.title} items={item.item}/>
             ))}
