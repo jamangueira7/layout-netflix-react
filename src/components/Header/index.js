@@ -1,34 +1,21 @@
 import React from 'react';
 import './styles.css';
 
-export default ({item}) => {
-    let firsDate = new Date(item.first_air_date);
-    let genres = [];
-    for(let i in item.genres) {
-        genres.push(item.genres[i].name);
-    }
+export default ({ black }) => {
     return (
-        <section className="featured" style={{
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundImage: `url(https://image.tmdb.org/t/p/original/${item.backdrop_path})`
-        }}>
-            <div className='featured--vertical'>
-                <div className='featured--horizontal'>
-                    <div className='featured--name'>{item.original_name}</div>
-                    <div className='featured--info'>
-                        <div className='featured--points'>{item.vote_average} pontos</div>
-                        <div className='featured--year'>{firsDate.getFullYear()}</div>
-                        <div className='featured--seasons'>{item.number_of_seasons} temporada{item.number_of_seasons !== 1? 's' : ''}</div>
-                    </div>
-                    <div className='featured--description'>{item.overview}</div>
-                    <div className='featured--buttons'>
-                        <a href={`/watch/${item.id}`} className='featured--watchbutton'>► Assistir</a>
-                        <a href={`/list/add/${item.id}`} className='featured--mylistbutton'>+ Minha Lista</a>
-                    </div>
-                    <div className='featured--genres'>Gêneros: <strong>{genres.join(', ')}</strong></div>
-                </div>
+        <header className={black ? "black" : "" }>
+            <div className="header--logo">
+                <a href="/">
+                    <img src="https://www.caviarcriativo.com/wp-content/uploads/2020/06/Significados-da-Marca-Netflix-1000x480.gif" alt="logo"/>
+                </a>
+
             </div>
-        </section>
+            <div className="header--user">
+                <a href="/">
+                    <img src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png" alt="Usuário"/>
+                </a>
+
+            </div>
+        </header>
     );
 }
