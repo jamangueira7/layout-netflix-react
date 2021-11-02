@@ -49,6 +49,7 @@ function App() {
             <FeatureMovie item={featuredData}/>
         }
         <section className="lists">
+
             {movieList.map((item, key) => (
                   <MovieRow key={key} title={item.title} items={item.item}/>
             ))}
@@ -58,8 +59,16 @@ function App() {
             Direitos de imagem para Netflix<br/>
             Dados pegos dos site Themoviedb.org<br/>
         </footer>
+
+        {movieList.length <= 0 &&
+            <div className="loading">
+                <img src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif" alt="loading" />
+            </div>
+        }
+
     </div>
   );
 }
+
 
 export default App;
